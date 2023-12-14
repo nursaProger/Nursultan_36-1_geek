@@ -14,3 +14,19 @@ CREATE TABLE IF NOT EXISTS telegram_users
 INSERT_USER_QUERY = """
 INSERT OR IGNORE INTO telegram_users VALUES (?,?,?,?,?)
 """
+
+
+
+INSERT_NEW_BAN_USER_QUERY = """
+INSERT INTO ban_user VALUES (?,?,?)
+"""
+
+SELECT_BAN_USER_QUERY = """
+SELECT * FROM ban_user WHERE TELEGRAM_ID = ?
+"""
+
+UPDATE_BAN_USER_COUNT_QUERY = """
+UPDATE ban_user SET BAN_COUNT = BAN_COUNT + 1 WHERE TELEGRAM_ID = ?
+"""
+
+
