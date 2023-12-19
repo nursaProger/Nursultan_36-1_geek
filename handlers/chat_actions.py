@@ -26,12 +26,12 @@ async def chat_messages(message: types.Message):
                 else:
                     await bot.send_message(
                         chat_id=message.chat.id,
-                        text="You r banned"
+                        text="You are banned"
                     )
                     await bot.ban_chat_member(
                         chat_id=message.chat.id,
                         user_id=message.from_user.id,
-                        until_date=datetime.now() + timedelta(seconds=100)
+                        until_date=datetime.now() + timedelta(seconds=200)
                     )
             else:
                 db.sql_update_ban_user_count(
@@ -49,4 +49,3 @@ async def chat_messages(message: types.Message):
 
 def register_chat_actions_handlers(dp: Dispatcher):
     dp.register_message_handler(chat_messages)
-
